@@ -1,0 +1,38 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  
+}
+
+:root {
+  --primary: #00A0E6;
+  --secondary: #F1F3F9;
+  --text-color: #3C465A;
+  
+}
+
+html {
+  font-size: 87.5%;
+}
+
+@media(min-width:768px) {
+  html {
+    font-size: 93.78%;
+  }
+}
+
+body, input, textarea, button {
+  font: 400 1rem 'Nunito', sans-serif;
+  color: var(--text-color);
+}
+
+button {
+  cursor: pointer;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+

@@ -1,0 +1,60 @@
+.homeContainer {
+    width: 100%;
+
+    overflow: hidden;
+
+    position: relative;
+
+    padding: 2rem 1rem 0 1rem;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.titleBar {
+    display: flex;
+
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.titleBar h2 {
+    font-weight: 400;
+    font-size: 1.75rem;
+}
+
+.titleBar button {
+    background-color: inherit;
+    border: none;
+}
+
+.projectsList {
+    flex: 1;
+
+    margin-top: 1.5rem;
+    padding: 0 1rem;
+
+    overflow-y: auto;
+
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 1.5rem;
+}
+
+@media(min-width:768px) {
+    .homeContainer {
+        padding: 4rem 6rem;
+    }
+
+    .homeContainer h2 {
+        font-size: 1.9rem;
+    }
+
+    .projectsList {
+        margin-top: 4rem;
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
