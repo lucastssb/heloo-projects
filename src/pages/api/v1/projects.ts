@@ -18,7 +18,7 @@ export default (req: NextApiRequest, res: NextApiResponse) => {
         {
           name: "Primeiro projeto",
           description: "Muito legal",
-          viability: 5,
+          viability: 4,
           start_date: "20/04/2021",
           end_date: "20/05/2021",
           status: "Planejado",
@@ -28,7 +28,7 @@ export default (req: NextApiRequest, res: NextApiResponse) => {
         {
           name: "Primeiro projeto",
           description: "Muito legal",
-          viability: 5,
+          viability: 2,
           start_date: "20/04/2021",
           end_date: "20/05/2021",
           status: "Planejado",
@@ -38,7 +38,7 @@ export default (req: NextApiRequest, res: NextApiResponse) => {
         {
           name: "Primeiro projeto",
           description: "Muito legal",
-          viability: 5,
+          viability: 3,
           start_date: "20/04/2021",
           end_date: "20/05/2021",
           status: "Planejado",
@@ -48,7 +48,7 @@ export default (req: NextApiRequest, res: NextApiResponse) => {
         {
           name: "Primeiro projeto",
           description: "Muito legal",
-          viability: 5,
+          viability: 1,
           start_date: "20/04/2021",
           end_date: "20/05/2021",
           status: "Planejado",
