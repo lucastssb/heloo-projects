@@ -1,71 +1,16 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import { NextApiRequest, NextApiResponse } from "next";
+import { connectToDatabase } from '../../../services/db';
 
-export default (req: NextApiRequest, res: NextApiResponse) => {
-  if (req.method === "GET") {
-    res.json({
-      data: [
-        {
-          name: "Primeiro projeto",
-          description: "Muito legal",
-          viability: 5,
-          start_date: "20/04/2021",
-          end_date: "20/05/2021",
-          status: "Planejado",
-          value: "10000",
-          name_responsible: "Lucas Barbosa",
-        },
-        {
-          name: "Primeiro projeto",
-          description: "Muito legal",
-          viability: 4,
-          start_date: "20/04/2021",
-          end_date: "20/05/2021",
-          status: "Planejado",
-          value: "10000",
-          name_responsible: "Lucas Barbosa",
-        },
-        {
-          name: "Primeiro projeto",
-          description: "Muito legal",
-          viability: 2,
-          start_date: "20/04/2021",
-          end_date: "20/05/2021",
-          status: "Planejado",
-          value: "10000",
-          name_responsible: "Lucas Barbosa",
-        },
-        {
-          name: "Primeiro projeto",
-          description: "Muito legal",
-          viability: 3,
-          start_date: "20/04/2021",
-          end_date: "20/05/2021",
-          status: "Planejado",
-          value: "10000",
-          name_responsible: "Lucas Barbosa",
-        },
-        {
-          name: "Primeiro projeto",
-          description: "Muito legal",
-          viability: 1,
-          start_date: "20/04/2021",
-          end_date: "20/05/2021",
-          status: "Planejado",
-          value: "10000",
-          name_responsible: "Lucas Barbosa",
-        },
-        {
-          name: "Primeiro projeto",
-          description: "Muito legal",
-          viability: 5,
-          start_date: "20/04/2021",
-          end_date: "20/05/2021",
-          status: "Planejado",
-          value: "10000",
-          name_responsible: "Lucas Barbosa",
-        },
-      ],
-    });
+export default async (req: NextApiRequest, res: NextApiResponse) => {
+  const { client, db } = await connectToDatabase();
+
+  if (client.isConnected()){
+    const data = await db.collection(process.env.MONGODB_DB_COLLECTION).find().toArray();
+    res.status(200);
+    
+    return res.json(JSON.stringify(data));
   }
+
+  return res.status(500).json({ error: 'client DB is not connected' })
 };

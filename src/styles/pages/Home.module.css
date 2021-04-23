@@ -3,14 +3,39 @@
 
     overflow: hidden;
 
-    position: relative;
-
     padding: 2rem 1rem 0 1rem;
 
     display: flex;
     flex-direction: column;
     justify-content: space-between;
 }
+
+.floatingButton {
+    position: absolute;
+  
+    z-index: 10;
+  
+    width: 4rem;
+    height: 4rem;
+  
+    transition: background 0.8s;
+  
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  
+    background: var(--secondary);
+  
+    border-radius: 50%;
+  
+    right: 30px;
+    bottom: 30px;
+  }
+  
+  .floatingButton:hover {
+    background: var(--text-color);
+    color: var(--secondary);
+  }
 
 .titleBar {
     display: flex;

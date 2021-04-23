@@ -3,7 +3,12 @@ import Link from "next/link";
 
 import styles from "../styles/components/Form.module.css";
 
-export default function Form() {
+interface FormProps {
+  disabled?: boolean;
+  partiallyDisabled?: boolean;
+}
+
+export default function Form({ disabled, partiallyDisabled}: FormProps) {
   const [name, setName] = useState('');
   const [viability, setViability] = useState('');
   const [initDate, setInitDate] = useState('');
@@ -33,11 +38,11 @@ export default function Form() {
       <div className={styles.multipleInputs}>
         <div className={styles.inputBlock}>
           <label htmlFor="name">Nome</label>
-          <input type="text" id="name" value={name} onChange={event => setName(event.target.value)}/>
+          <input disabled={disabled || partiallyDisabled} type="text" id="name" value={name} onChange={event => setName(event.target.value)}/>
         </div>
         <div className={styles.selectBlock}>
           <label htmlFor="viability">Viabilidade</label>
-          <select name="viability-options" id="viability" value={viability} onChange={event => setViability(event.target.value)}>
+          <select disabled={disabled} name="viability-options" id="viability" value={viability} onChange={event => setViability(event.target.value)}>
             <option value="1">1</option>
             <option value="2">2</option>
             <option value="3">3</option>
@@ -49,22 +54,22 @@ export default function Form() {
       <div className={styles.multipleInputs}>
         <div className={styles.inputBlock}>
           <label htmlFor="init-date">Data de inicio</label>
-          <input type="date" id="int-date" value={initDate} onChange={event => setInitDate(event.target.value)}/>
+          <input disabled={disabled || partiallyDisabled} type="date" id="int-date" value={initDate} onChange={event => setInitDate(event.target.value)}/>
         </div>
         <div className={styles.inputBlock} style={{ alignItems: "flex-end" }}>
           <label htmlFor="end-date">Data de termino</label>
-          <input type="date" id="end-date" value={endDate} onChange={event => setEndDate(event.target.value)}/>
+          <input disabled={disabled || partiallyDisabled} type="date" id="end-date" value={endDate} onChange={event => setEndDate(event.target.value)}/>
         </div>
       </div>
 
       <div className={styles.multipleInputs}>
         <div className={styles.inputBlock}>
           <label htmlFor="execution-value">Valor de execucao</label>
-          <input type="text" id="execution-value" value={executionValue} onChange={event => setExecutionValue(event.target.value)}/>
+          <input disabled={disabled || partiallyDisabled} type="text" id="execution-value" value={executionValue} onChange={event => setExecutionValue(event.target.value)}/>
         </div>
         <div className={styles.selectBlock}>
           <label htmlFor="situation">Situacao</label>
-          <select name="situation-options" id="situation" value={situation} onChange={event => setSituation(event.target.value)}>
+          <select disabled={disabled} name="situation-options" id="situation" value={situation} onChange={event => setSituation(event.target.value)}>
             <option value="1">Planejado</option>
             <option value="2">Em desenvolvimento</option>
             <option value="3">Cancelado</option>
@@ -74,11 +79,11 @@ export default function Form() {
       </div>
       <div className={styles.inputBlock}>
         <label htmlFor="responsible-person">Pessoa responsavel</label>
-        <input type="text" id="responsible-person" value={responsiblePerson} onChange={event => setResponsiblePerson(event.target.value)}/>
+        <input disabled={disabled || partiallyDisabled} type="text" id="responsible-person" value={responsiblePerson} onChange={event => setResponsiblePerson(event.target.value)}/>
       </div>
       <div className={styles.inputBlock}>
         <label htmlFor="description">Descricao</label>
-        <textarea id="description" value={description} onChange={event => setDescription(event.target.value)}/>
+        <textarea disabled={disabled} id="description" value={description} onChange={event => setDescription(event.target.value)}/>
       </div>
 
       <button type="submit">

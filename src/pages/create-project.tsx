@@ -11,7 +11,7 @@ export default function CreateProject() {
                 <Form />
             </div> */}
 
-            <Form />
+            <Form partiallyDisabled/>
         </div>
     );
 }

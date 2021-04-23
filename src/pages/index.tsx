@@ -1,5 +1,7 @@
 import React, { useContext } from "react";
 import styles from "../styles/pages/Home.module.css";
+import Link from "next/link";
+import { FiPlus } from "react-icons/fi";
 import { MdFilterList } from "react-icons/md";
 import { ProjectsContext } from "../contexts/ProjectsContext";
 import ProjectItem from "../components/ProjectItem";
@@ -16,18 +18,11 @@ interface Project {
   value: number;
   name_responsible: string;
 }
-
-interface ApiData {
-  data : Project[];
-}
-
 interface HomeProps {
-  apiData: ApiData;
+  projects: Project[];
 }
 
-export default function Home({apiData} : HomeProps) {
-  const { data: projects } = apiData;
-
+export default function Home({ projects } : HomeProps) {
   //const { projects } = useContext(ProjectsContext);
 
   if (projects === undefined) return <h1>Carregando</h1>
@@ -49,6 +44,11 @@ export default function Home({apiData} : HomeProps) {
           />
         ))}  
       </div>
+      <Link href="/create-project" passHref>
+        <a className={styles.floatingButton}>
+          <FiPlus size={40} />
+        </a>
+      </Link>
     </main>
   );
 }
@@ -56,9 +56,10 @@ export default function Home({apiData} : HomeProps) {
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
   const apiData = await api.get('api/v1/projects');
+  //console.log(apiData.data);
   return {
     props: {
-      apiData: apiData.data
+      projects: apiData.data
     }
   }
 }
