@@ -31,7 +31,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 
       if (project) {
         return res
-          .status(500)
+          .status(400)
           .json({ error: "There is a project with the same name" });
       }
 

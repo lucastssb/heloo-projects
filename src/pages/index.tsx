@@ -6,7 +6,7 @@ import { MdFilterList } from "react-icons/md";
 import { ProjectsContext } from "../contexts/ProjectsContext";
 import ProjectItem from "../components/ProjectItem";
 import { GetServerSideProps } from "next";
-import api from "../services/api";
+import { useGetProjects } from "../hooks/project";
 
 interface Project {
   name: string;
@@ -55,11 +55,11 @@ export default function Home({ projects } : HomeProps) {
 
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
-  const apiData = await api.get('api/v1/projects');
+  const data = await useGetProjects();
   //console.log(apiData.data);
   return {
     props: {
-      projects: apiData.data
+      projects: data,
     }
   }
 }
