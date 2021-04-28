@@ -1,7 +1,7 @@
 import Head from "next/head";
 import React from "react";
 import Layout from "../components/Layout";
-import { ProjectsProvider } from "../contexts/ProjectsContext";
+import { ProjectsProvider }  from "../contexts/ProjectsContext";
 import "../styles/globals.css";
 
 function MyApp({ Component, pageProps }) {
@@ -18,3 +18,5 @@ function MyApp({ Component, pageProps }) {
 }
 
 export default MyApp;
+
+

@@ -1,4 +1,4 @@
-.createProjectContainer {
+.projectDetailsContainer {
   width: 100%;
   max-width: 1100px;
   height: 100%;
@@ -9,14 +9,22 @@
   padding: 2rem 1rem 0 1rem;
 }
 
-.createProjectContainer h2 {
-  font-weight: 400;
-  font-size: 1.75rem;
+.titleBar {
+  width: 100%;
+
+  display: flex;
+
+  justify-content: space-between;
+  align-items: center;
 }
 
-.formWrapper {
-  display: flex;
-  flex-direction: row;
+.titleBar button {
+  background-color: inherit;
+  border: none;
+}
+
+.titleBar button:disabled {
+  cursor: not-allowed;
 }
 
 .formContainer {
@@ -33,7 +41,7 @@
   color: rgb(133, 133, 133);
 }
 
-.formContainer button {
+.buttonSave {
   width: 100%;
   height: 4rem;
 
@@ -49,8 +57,28 @@
   transition: background-color 0.5s;
 }
 
-.formContainer button:hover {
+.buttonSave:hover {
   background: #30ac6e;
+}
+
+.buttonDelete {
+  width: 100%;
+  height: 4rem;
+
+  border: 1px solid #e64343;
+  border-radius: 1rem;
+
+  background: #ff4d4d;
+
+  color: #fff;
+  font-size: 1.25rem;
+  font-weight: 600;
+
+  transition: background-color 0.5s;
+}
+
+.buttonDelete:hover {
+  background: #ce3c3c;
 }
 
 .formContainer a {
@@ -118,6 +146,10 @@
   padding: 0 1rem;
 }
 
+.selectBlock select:disabled {
+  border: none;
+}
+
 .selectBlock select:focus {
   border: 2px solid var(--primary);
   outline: none;
@@ -129,23 +161,6 @@
   flex-direction: column;
 
   margin-bottom: 1rem;
-}
-
-/* .initDateBlock {
-  
-  } */
-
-/* .endDateBlock {
-    
-  } */
-
-.inputBlock input {
-  height: 4rem;
-
-  background: var(--secondary);
-
-  border: 1px solid rgb(179, 179, 179);
-  border-radius: 1rem;
 }
 
 .inputBlock span {
@@ -160,6 +175,27 @@
 
 .warnActive {
   opacity: 1;
+}
+
+.initDateBlock {
+  margin-right: 0.5rem;
+}
+
+.endDateBlock {
+  margin-left: 0.5rem;
+}
+
+.inputBlock input {
+  height: 4rem;
+
+  background: var(--secondary);
+
+  border: 1px solid rgb(179, 179, 179);
+  border-radius: 1rem;
+}
+
+.inputBlock input:disabled {
+  border: none;
 }
 
 .inputBlock input::-webkit-outer-spin-button {
@@ -189,7 +225,6 @@
 
 .inputBlock input[type="date"] {
   max-width: 14rem;
-
   padding: 0 1rem;
 }
 
@@ -206,6 +241,10 @@
   resize: none;
 }
 
+.inputBlock textarea:disabled {
+  border: none;
+}
+
 .inputBlock textarea:focus {
   border: 2px solid var(--primary);
 
@@ -213,12 +252,8 @@
 }
 
 @media (min-width: 768px) {
-  .createProjectContainer {
+  .projectDetailsContainer {
     padding: 4rem 6rem;
-  }
-
-  .createProjectContainer h2 {
-    font-size: 1.9rem;
   }
 
   .inputBlock input[type="date"] {

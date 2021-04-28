@@ -9,7 +9,15 @@
 
   box-shadow: 0px 6px 14px -6px rgba(0,0,0,0.3);
   transition: box-shadow 0.5s;
+}
 
+.projectItemContainer a {
+  position: absolute;
+
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
 }
 
 .projectItemContainer:hover {
@@ -30,6 +38,57 @@
 
 .dateAndOptionsContainer {
   padding: 1.5rem 0 0 0;
+
+  color: rgb(122, 122, 122);
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.projectOptionsContainer {
+  position: absolute;
+
+  width: 4.5rem;
+
+  bottom: 10px;
+  right: 10px;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  z-index: 5;
+}
+
+.projectOptionsContainer button {
+  background-color: #fff;
+
+  width: 2rem;
+  height: 2rem;
+
+  border: none;
+  border-radius: 50%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.completeButton:enabled:hover {
+  border: 2px solid #22d422;
+}
+
+.completeButton:disabled {
+  opacity: 0.5;
+  background-color: rgb(230, 230, 230);
+}
+
+.cancelButton:enabled:hover {
+  border: 2px solid #ff4d4d;
+}
+
+.cancelButton:disabled {
+  opacity: 0.5;
+  background-color: rgb(230, 230, 230);
 }
 
 @media (min-width: 768px) {
