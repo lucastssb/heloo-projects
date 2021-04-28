@@ -17,10 +17,6 @@ interface Project {
   name_responsible: string;
   slug: string;
 }
-/* interface HomeProps {
-  projects: Project[];
-}
- */
 
 function getCurrentDateFormatted() {
   return new Date().toISOString().slice(0, 10);
@@ -49,11 +45,7 @@ export default function Home() {
   function handleFilter() {
     const filteredProjects = projects.filter((project) => {
       if (viability !== "" && project.viability !== parseInt(viability)) return;
-
       if (situation !== "" && project.status !== situation) return;
-
-      /* console.log('Project date' + project.start_date);
-      if(initDate !== '' && project.start_date.toISOString().slice(0, 10) !==  initDate) return; */
 
       return project;
     });

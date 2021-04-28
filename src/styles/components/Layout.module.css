@@ -8,31 +8,3 @@
   flex-direction: column;
   align-items: center;
 }
-
-/* .layoutContainer a {
-  position: absolute;
-
-  z-index: 10;
-
-  width: 4rem;
-  height: 4rem;
-
-  transition: background 0.8s;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  background: var(--secondary);
-
-  border-radius: 50%;
-
-  right: 30px;
-  bottom: 30px;
-}
-
-.layoutContainer a:hover {
-  background: var(--text-color);
-  color: var(--secondary);
-}
- */
