@@ -1,12 +1,12 @@
 import React, { useContext, useState } from "react";
-import { parseISO } from 'date-fns';
-import { BiEditAlt } from "react-icons/bi";
+import { parseISO } from "date-fns";
+import { BiEditAlt, BiArrowBack } from "react-icons/bi";
 import { GetServerSideProps } from "next";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { ProjectsContext } from "../../contexts/ProjectsContext";
 
-import styles from "../../styles/pages/ProjectDetails.module.css"
+import styles from "../../styles/pages/ProjectDetails.module.css";
 import api from "../../services/api";
 
 interface Project {
@@ -27,9 +27,7 @@ interface ProjectDetailsProps {
 
 export default function ProjectDetails({ project }: ProjectDetailsProps) {
   const router = useRouter();
-  const { updateProject, deleteProject} = useContext(
-    ProjectsContext
-  );
+  const { updateProject, deleteProject } = useContext(ProjectsContext);
 
   const [viability, setViability] = useState(project.viability);
   const [situation, setSituation] = useState(project.status);
@@ -64,6 +62,13 @@ export default function ProjectDetails({ project }: ProjectDetailsProps) {
 
   return (
     <div className={styles.projectDetailsContainer}>
+      <div>
+        <Link href="/" passHref>
+          <a className={styles.goBackLink}>
+            <BiArrowBack size={22} />
+          </a>
+        </Link>
+      </div>
       <div className={styles.titleBar}>
         <h1>{project.name}</h1>
         <button
@@ -83,7 +88,7 @@ export default function ProjectDetails({ project }: ProjectDetailsProps) {
         >
           <div className={styles.multipleInputs}>
             <div className={`${styles.inputBlock} ${styles.initDateBlock}`}>
-              <label htmlFor="init-date">Data de inicio</label>
+              <label htmlFor="init-date">Data de início</label>
               <input
                 disabled
                 type="date"
@@ -92,7 +97,7 @@ export default function ProjectDetails({ project }: ProjectDetailsProps) {
               />
             </div>
             <div className={`${styles.inputBlock} ${styles.endDateBlock}`}>
-              <label htmlFor="end-date">Data de termino</label>
+              <label htmlFor="end-date">Data de término</label>
               <input
                 disabled
                 type="date"
@@ -104,7 +109,7 @@ export default function ProjectDetails({ project }: ProjectDetailsProps) {
 
           <div className={styles.multipleInputs}>
             <div className={styles.inputBlock}>
-              <label htmlFor="execution-value">Valor de execucao</label>
+              <label htmlFor="execution-value">Valor de execução</label>
               <input
                 disabled
                 type="number"
@@ -113,7 +118,7 @@ export default function ProjectDetails({ project }: ProjectDetailsProps) {
               />
             </div>
             <div className={`${styles.selectBlock} ${styles.situationBlock}`}>
-              <label htmlFor="situation">Situacao</label>
+              <label htmlFor="situation">Situação</label>
               <select
                 disabled={!isEditable}
                 name="situation-options"
@@ -156,7 +161,7 @@ export default function ProjectDetails({ project }: ProjectDetailsProps) {
             </div>
           </div>
           <div className={styles.inputBlock}>
-            <label htmlFor="description">Descricao</label>
+            <label htmlFor="description">Descrição</label>
             <textarea
               disabled={!isEditable}
               id="description"
@@ -187,9 +192,6 @@ export default function ProjectDetails({ project }: ProjectDetailsProps) {
               Excluir
             </button>
           )}
-          <Link href="/" passHref>
-            <a>Cancelar</a>
-          </Link>
         </form>
       </div>
     </div>
@@ -205,4 +207,3 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
     },
   };
 };
-

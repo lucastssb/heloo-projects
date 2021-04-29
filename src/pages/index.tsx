@@ -1,10 +1,12 @@
 import React, { useContext, useState, useEffect } from "react";
 import styles from "../styles/pages/Home.module.css";
+import { parseISO } from "date-fns";
 import Link from "next/link";
 import { FiPlus } from "react-icons/fi";
 import { MdFilterList } from "react-icons/md";
 import { ProjectsContext } from "../contexts/ProjectsContext";
 import ProjectItem from "../components/ProjectItem";
+import ShimmerProjectItem from "../components/ShimmerProjectItem";
 
 interface Project {
   name: string;
@@ -25,12 +27,12 @@ function getCurrentDateFormatted() {
 export default function Home() {
   const { projects } = useContext(ProjectsContext);
 
-  if (!projects) return <h1>Carregando</h1>;
-
   const [filterProjects, setFilterProjects] = useState([] as Project[]);
   const [viability, setViability] = useState("");
   const [initDate, setInitDate] = useState("");
   const [situation, setSituation] = useState("");
+
+  const [showFilter, setShowFilter] = useState(false);
 
   useEffect(() => {
     setFilterProjects(projects);
@@ -40,12 +42,22 @@ export default function Home() {
     handleFilter();
   }, [viability, initDate, situation]);
 
-  
+  function resetFilters() {
+    setInitDate("");
+    setSituation("");
+    setViability("");
+  }
 
   function handleFilter() {
     const filteredProjects = projects.filter((project) => {
       if (viability !== "" && project.viability !== parseInt(viability)) return;
       if (situation !== "" && project.status !== situation) return;
+      if (
+        initDate !== "" &&
+        parseISO(initDate).toDateString() !==
+          parseISO(project.start_date).toDateString()
+      )
+        return;
 
       return project;
     });
@@ -57,11 +69,21 @@ export default function Home() {
     <main className={styles.homeContainer}>
       <div className={styles.titleBar}>
         <h2>Projetos</h2>
-        <button type="button">
+        <button
+          type="button"
+          onClick={() => {
+            setShowFilter(!showFilter);
+            if (showFilter) resetFilters();
+          }}
+        >
           <MdFilterList size={25} />
         </button>
       </div>
-      <div className={styles.filterBar}>
+      <div
+        className={`${styles.filterBar} ${
+          showFilter ? styles.filterBarActive : styles.filterBarInactive
+        }`}
+      >
         <div className={styles.fieldWrapper}>
           <label htmlFor="viability">Viabilidade</label>
           <select
@@ -81,7 +103,7 @@ export default function Home() {
           </select>
         </div>
         <div className={styles.fieldWrapper}>
-          <label htmlFor="situation">Situacao</label>
+          <label htmlFor="situation">Situação</label>
           <select
             name="situation-filter"
             id="situation"
@@ -98,7 +120,7 @@ export default function Home() {
           </select>
         </div>
         <div className={styles.fieldWrapper}>
-          <label htmlFor="init-date">Data de inicio</label>
+          <label htmlFor="init-date">Data de início</label>
           <input
             type="date"
             id="int-date"
@@ -109,11 +131,19 @@ export default function Home() {
           />
         </div>
       </div>
-      <div className={styles.projectsList}>
-        {filterProjects.map((project, index) => (
-          <ProjectItem key={index} project={project} />
-        ))}
-      </div>
+      {!!projects.length ? (
+        <div className={styles.projectsList}>
+          {filterProjects.map((project, index) => (
+            <ProjectItem key={index} project={project} />
+          ))}
+        </div>
+      ) : (
+        <div className={styles.projectsList}>
+          {[0, 1, 2, 3, 4, 5].map((item, index) => (
+            <ShimmerProjectItem key={index} />
+          ))}
+        </div>
+      )}
       <Link href="/create-project" passHref>
         <a className={styles.floatingButton}>
           <FiPlus size={40} />

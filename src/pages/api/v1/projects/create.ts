@@ -9,7 +9,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   const { client, db } = await connectToDatabase();
 
   if (req.method === "POST") {
-    const { 
+    const {
       name,
       description,
       viability,
@@ -21,7 +21,11 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     } = req.body;
 
     // Generate a slug from the name
-    const slug = name.toLowerCase().replace(' ', '-');
+    const slug = name
+      .toLowerCase()
+      .replace(" ", "-")
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "");
 
     // Verify is the db client is connected
     if (client.isConnected()) {
@@ -41,14 +45,14 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
         viability,
         start_date: new Date(start_date),
         end_date: new Date(end_date),
-        created_at : new Date(),
-        updated_at : '',
-        final_status_date: '',
+        created_at: new Date(),
+        updated_at: "",
+        final_status_date: "",
         status,
         value,
         name_responsible,
         slug,
-      }
+      };
 
       // Create a schema for data validation
       const schema = Yup.object().shape({
@@ -70,7 +74,9 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       });
 
       // Insert new project on db
-      const { ops: newProject } = await db.collection(process.env.MONGODB_DB_COLLECTION).insertOne(data);
+      const { ops: newProject } = await db
+        .collection(process.env.MONGODB_DB_COLLECTION)
+        .insertOne(data);
 
       return res.status(201).json(newProject[0]);
     }

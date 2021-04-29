@@ -65,6 +65,16 @@
   overflow-x: auto;
 
   margin: 1rem 0;
+
+  transition: height 0.5s;
+}
+
+.filterBarActive {
+  height: 5rem;
+}
+
+.filterBarInactive {
+  height: 0;
 }
 
 .filterBar::-webkit-scrollbar {
@@ -81,14 +91,20 @@
 
 .fieldWrapper input {
   border: none;
-  
   font-size: 0.9rem;
+
+  background-color: inherit;
+
+  outline: none;
 }
 
 .fieldWrapper select {
   border: none;
   font-size: 0.9rem;
 
+  background-color: inherit;
+
+  outline: none;
 }
 
 .projectsList {

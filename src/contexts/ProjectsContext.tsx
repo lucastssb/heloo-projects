@@ -47,7 +47,8 @@ export function ProjectsProvider({ children }: ProjectsProviderProps) {
   const [apiData, setApiData] = useState([] as Project[]);
   const [isLoading, setIsLoading] = useState(false);
   useEffect(() => {
-    api
+    setTimeout(() => {
+      api
       .get("/projects")
       .then((response) => {
         setApiData(response.data);
@@ -55,6 +56,7 @@ export function ProjectsProvider({ children }: ProjectsProviderProps) {
       .catch((error) => {
         console.log(error);
       });
+    }, 7000);
   }, []);
 
   function refreshApiData() {
@@ -109,7 +111,7 @@ export function ProjectsProvider({ children }: ProjectsProviderProps) {
   function deleteProject(slug: string) {
     setIsLoading(true);
     api
-      .delete(`api/v1/project/${slug}`)
+      .delete(`/project/${slug}`)
       .then((response) => {
         refreshApiData();
       })

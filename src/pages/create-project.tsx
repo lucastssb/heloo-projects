@@ -1,9 +1,10 @@
 import React, { useContext, useEffect, useState } from "react";
 import Link from "next/link";
+import { parseISO } from "date-fns";
 import { useRouter } from "next/router";
-
-import styles from "../styles/pages/CreateProject.module.css";
 import { ProjectsContext } from "../contexts/ProjectsContext";
+import { BiArrowBack } from "react-icons/bi";
+import styles from "../styles/pages/CreateProject.module.css";
 
 function getCurrentDateFormatted() {
   return new Date().toISOString().slice(0, 10);
@@ -23,6 +24,15 @@ export default function CreateProject() {
   const [hasPersonError, setHasPersonError] = useState(false);
   const [hasValueError, setHasValueError] = useState(false);
   const [hasNameError, setHasNameError] = useState(false);
+
+  useEffect(() => {
+    const initDateISO = parseISO(initDate);
+    const endDateISO = parseISO(endDate);
+
+    if (endDateISO.getTime() < initDateISO.getTime()) {
+      setEndDate(initDate);
+    }
+  }, [initDate]);
 
   function formValidator() {
     let errors = 0;
@@ -82,6 +92,13 @@ export default function CreateProject() {
 
   return (
     <div className={styles.createProjectContainer}>
+      <div>
+        <Link href="/" passHref>
+          <a className={styles.goBackLink}>
+            <BiArrowBack size={22} />
+          </a>
+        </Link>
+      </div>
       <h2>Criar projeto</h2>
       <form onSubmit={handleSubmit} className={styles.formContainer}>
         <div className={styles.multipleInputs}>
@@ -93,7 +110,7 @@ export default function CreateProject() {
               value={name}
               onChange={(event) => {
                 setName(event.target.value);
-                if (name !== '' && hasNameError === true)
+                if (name !== "" && hasNameError === true)
                   setHasNameError(false);
               }}
             />
@@ -102,9 +119,9 @@ export default function CreateProject() {
                 hasNameError === true ? styles.warnActive : styles.warnInactive
               }
             >
-              Esse campo nao pode ser vazio
+              Esse campo não pode ser vazio
             </span>
-            {hasSameName && <span>Ja existe um projeto com o mesmo nome</span>}
+            {hasSameName && <span>Já existe um projeto com o mesmo nome</span>}
           </div>
           <div className={`${styles.selectBlock} ${styles.viabilityBlock}`}>
             <label htmlFor="viability">Viabilidade</label>
@@ -124,7 +141,7 @@ export default function CreateProject() {
         </div>
         <div className={styles.multipleInputs}>
           <div className={`${styles.inputBlock} ${styles.initDateBlock}`}>
-            <label htmlFor="init-date">Data de inicio</label>
+            <label htmlFor="init-date">Data de início</label>
             <input
               type="date"
               id="int-date"
@@ -133,10 +150,11 @@ export default function CreateProject() {
             />
           </div>
           <div className={`${styles.inputBlock} ${styles.endDateBlock}`}>
-            <label htmlFor="end-date">Data de termino</label>
+            <label htmlFor="end-date">Data de término</label>
             <input
               type="date"
               id="end-date"
+              min={initDate}
               value={endDate}
               onChange={(event) => setEndDate(event.target.value)}
             />
@@ -145,7 +163,7 @@ export default function CreateProject() {
 
         <div className={styles.multipleInputs}>
           <div className={styles.inputBlock}>
-            <label htmlFor="execution-value">Valor de execucao</label>
+            <label htmlFor="execution-value">Valor de execução</label>
             <input
               type="number"
               id="execution-value"
@@ -161,11 +179,11 @@ export default function CreateProject() {
                 hasValueError === true ? styles.warnActive : styles.warnInactive
               }
             >
-              Esse campo nao pode ser vazio
+              Esse campo não pode ser vazio
             </span>
           </div>
           <div className={`${styles.selectBlock} ${styles.situationBlock}`}>
-            <label htmlFor="situation">Situacao</label>
+            <label htmlFor="situation">Situação</label>
             <select
               name="situation-options"
               id="situation"
@@ -196,11 +214,11 @@ export default function CreateProject() {
               hasPersonError === true ? styles.warnActive : styles.warnInactive
             }
           >
-            Esse campo nao pode ser vazio
+            Esse campo não pode ser vazio
           </span>
         </div>
         <div className={styles.inputBlock}>
-          <label htmlFor="description">Descricao</label>
+          <label htmlFor="description">Descrição</label>
           <textarea
             id="description"
             value={description}
@@ -217,14 +235,10 @@ export default function CreateProject() {
                 : styles.warnInactive
             }
           >
-            Esse campo nao pode ser vazio
+            Esse campo não pode ser vazio
           </span>
         </div>
-
         <button type="submit">Criar</button>
-        <Link href="/" passHref>
-          <a>Cancelar</a>
-        </Link>
       </form>
     </div>
   );

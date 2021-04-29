@@ -2,7 +2,6 @@ import { NextApiRequest, NextApiResponse } from "next";
 import * as Yup from "yup";
 import { connectToDatabase } from "../../../../services/db";
 
-// TODO: not allow special characters on slug
 // TODO: surround database operations with try statements
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
