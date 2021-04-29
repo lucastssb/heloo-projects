@@ -3,6 +3,7 @@ import { parseISO } from "date-fns";
 import { BiEditAlt, BiArrowBack } from "react-icons/bi";
 import { GetServerSideProps } from "next";
 import Link from "next/link";
+import Head from "next/head";
 import { useRouter } from "next/router";
 import { ProjectsContext } from "../../contexts/ProjectsContext";
 
@@ -61,6 +62,10 @@ export default function ProjectDetails({ project }: ProjectDetailsProps) {
   }
 
   return (
+    <>
+    <Head>
+      <title>{project.name}</title>
+    </Head>
     <div className={styles.projectDetailsContainer}>
       <div>
         <Link href="/" passHref>
@@ -195,6 +200,7 @@ export default function ProjectDetails({ project }: ProjectDetailsProps) {
         </form>
       </div>
     </div>
+    </>
   );
 }
 

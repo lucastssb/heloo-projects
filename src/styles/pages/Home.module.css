@@ -98,6 +98,10 @@
   outline: none;
 }
 
+.fieldWrapper input::-webkit-calendar-picker-indicator {
+  margin-left: 0px;
+}
+
 .fieldWrapper select {
   border: none;
   font-size: 0.9rem;

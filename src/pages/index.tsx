@@ -1,12 +1,13 @@
 import React, { useContext, useState, useEffect } from "react";
-import styles from "../styles/pages/Home.module.css";
 import { parseISO } from "date-fns";
 import Link from "next/link";
+import Head from 'next/head';
 import { FiPlus } from "react-icons/fi";
 import { MdFilterList } from "react-icons/md";
 import { ProjectsContext } from "../contexts/ProjectsContext";
 import ProjectItem from "../components/ProjectItem";
 import ShimmerProjectItem from "../components/ShimmerProjectItem";
+import styles from "../styles/pages/Home.module.css";
 
 interface Project {
   name: string;
@@ -33,6 +34,7 @@ export default function Home() {
   const [situation, setSituation] = useState("");
 
   const [showFilter, setShowFilter] = useState(false);
+  const [ isInputFocused, setIsInputFocused] = useState(false);
 
   useEffect(() => {
     setFilterProjects(projects);
@@ -46,6 +48,7 @@ export default function Home() {
     setInitDate("");
     setSituation("");
     setViability("");
+    setIsInputFocused(false);
   }
 
   function handleFilter() {
@@ -66,6 +69,10 @@ export default function Home() {
   }
 
   return (
+   <>
+   <Head>
+     <title>Hello Projects</title>
+   </Head>
     <main className={styles.homeContainer}>
       <div className={styles.titleBar}>
         <h2>Projetos</h2>
@@ -122,7 +129,9 @@ export default function Home() {
         <div className={styles.fieldWrapper}>
           <label htmlFor="init-date">Data de início</label>
           <input
-            type="date"
+            placeholder="Qualquer"
+            type={isInputFocused ? 'date' : 'text'}
+            onFocus={() => setIsInputFocused(true)}
             id="int-date"
             value={initDate}
             onChange={(event) => {
@@ -150,5 +159,6 @@ export default function Home() {
         </a>
       </Link>
     </main>
+   </>
   );
 }

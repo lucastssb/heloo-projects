@@ -62,30 +62,6 @@
   background: #30ac6e;
 }
 
-.formContainer a {
-  width: 100%;
-  height: 4rem;
-
-  border: 1px solid #ddd;
-  border-radius: 1rem;
-
-  margin: 1rem 0;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  color: var(--primary);
-  font-size: 1.25rem;
-  font-weight: 600;
-
-  transition: background-color 0.5s;
-}
-
-.formContainer a:hover {
-  background: var(--secondary);
-}
-
 .formContainer label {
   margin-bottom: 0.5rem;
 }
@@ -140,13 +116,13 @@
   margin-bottom: 1rem;
 }
 
-/* .initDateBlock {
-  
-  } */
+.initDateBlock {
+  margin-right: 0.5rem;
+}
 
-/* .endDateBlock {
-    
-  } */
+.endDateBlock {
+  margin-left: 0.5rem;
+}
 
 .inputBlock input {
   height: 4rem;
@@ -200,6 +176,10 @@
   max-width: 14rem;
 
   padding: 0 1rem;
+}
+
+.inputBlock input[type="date"]::-webkit-calendar-picker-indicator {
+  margin-left: 0px;
 }
 
 .inputBlock textarea {
