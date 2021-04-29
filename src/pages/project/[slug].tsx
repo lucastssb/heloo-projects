@@ -200,7 +200,7 @@ export default function ProjectDetails({ project }: ProjectDetailsProps) {
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
   const { slug } = ctx.query;
-  const response = await api.get(`/project/${slug}`);
+  const response = await api.get(`/api/v1/project/${slug}`);
   return {
     props: {
       project: response.data,
