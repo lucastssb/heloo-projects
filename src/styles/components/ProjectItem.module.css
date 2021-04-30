@@ -1,147 +1,147 @@
 .projectItemContainer {
-  display: flex;
-  flex-direction: column;
+    display: flex;
+    flex-direction: column;
 
-  position: relative;
+    position: relative;
 
-  padding: 1rem;
-  border-radius: 1rem;
+    padding: 1rem;
+    border-radius: 1rem;
 
-  box-shadow: 0px 6px 14px -6px rgba(0,0,0,0.3);
-  transition: box-shadow 0.5s;
+    box-shadow: 0px 6px 14px -6px rgba(0, 0, 0, 0.3);
+    transition: box-shadow 0.5s;
 }
 
 .projectItemContainer a {
-  position: absolute;
+    position: absolute;
 
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
 }
 
 .projectItemContainer:hover {
-  box-shadow: 0px 6px 14px -5px rgba(0,0,0,0.6);
+    box-shadow: 0px 6px 14px -5px rgba(0, 0, 0, 0.6);
 }
 
 .projectItemContainer h1 {
-  font-size: 1.25rem;
-  font-weight: 600;
+    font-size: 1.25rem;
+    font-weight: 600;
 }
 
 .viabilityIcon {
     position: absolute;
-    
+
     top: 10px;
     right: 10px;
 }
 
 .dateAndOptionsContainer {
-  padding: 1.5rem 0 0 0;
+    padding: 1.5rem 0 0 0;
 
-  color: rgb(122, 122, 122);
-  font-size: 0.8rem;
-  font-weight: 600;
+    color: rgb(122, 122, 122);
+    font-size: 0.8rem;
+    font-weight: 600;
 }
 
 .projectOptionsContainer {
-  position: absolute;
+    position: absolute;
 
-  width: 4.5rem;
+    width: 4.5rem;
 
-  bottom: 10px;
-  right: 10px;
+    bottom: 10px;
+    right: 10px;
 
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 
-  z-index: 5;
+    z-index: 5;
 }
 
 .projectOptionsContainer button {
-  background-color: #fff;
+    background-color: #fff;
 
-  width: 2rem;
-  height: 2rem;
+    width: 2rem;
+    height: 2rem;
 
-  border: none;
-  border-radius: 50%;
+    border: none;
+    border-radius: 50%;
 
-  display: flex;
-  justify-content: center;
-  align-items: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .completeButton:enabled:hover {
-  border: 2px solid #22d422;
+    border: 2px solid #22d422;
 }
 
 .completeButton:disabled {
-  opacity: 0.5;
-  background-color: rgb(230, 230, 230);
+    opacity: 0.5;
+    background-color: rgb(230, 230, 230);
 }
 
 .cancelButton:enabled:hover {
-  border: 2px solid #ff4d4d;
+    border: 2px solid #ff4d4d;
 }
 
 .cancelButton:disabled {
-  opacity: 0.5;
-  background-color: rgb(230, 230, 230);
+    opacity: 0.5;
+    background-color: rgb(230, 230, 230);
 }
 
 @media (min-width: 768px) {
-  .projectItemContainer h1 {
-    font-size: 1.5rem;
-  }
+    .projectItemContainer h1 {
+        font-size: 1.5rem;
+    }
 
-  .dateAndOptionsContainer {
-    padding: 3rem 0 0 0;
-  }
+    .dateAndOptionsContainer {
+        padding: 3rem 0 0 0;
+    }
 }
 
 .blueBackground {
-  background: rgb(255, 255, 255);
-  background: linear-gradient(
-    45deg,
-    rgba(255, 255, 255, 1) 0%,
-    rgba(0, 160, 230, 0.5228466386554622) 100%
-  );
+    background: rgb(255, 255, 255);
+    background: linear-gradient(
+        45deg,
+        rgba(255, 255, 255, 1) 0%,
+        rgba(0, 160, 230, 0.5228466386554622) 100%
+    );
 }
 
 .yellowBackground {
-  background: rgb(255, 255, 255);
-  background: linear-gradient(
-    45deg,
-    rgba(255, 255, 255, 1) 0%,
-    rgba(207, 230, 0, 0.523) 100%
-  );
+    background: rgb(255, 255, 255);
+    background: linear-gradient(
+        45deg,
+        rgba(255, 255, 255, 1) 0%,
+        rgba(207, 230, 0, 0.523) 100%
+    );
 }
 
 .orangeBackground {
-  background: rgb(255, 255, 255);
-  background: linear-gradient(
-    45deg,
-    rgba(255, 255, 255, 1) 0%,
-    rgba(230, 123, 0, 0.523) 100%
-  );
+    background: rgb(255, 255, 255);
+    background: linear-gradient(
+        45deg,
+        rgba(255, 255, 255, 1) 0%,
+        rgba(230, 123, 0, 0.523) 100%
+    );
 }
 
 .redBackground {
-  background: rgb(255, 255, 255);
-  background: linear-gradient(
-    45deg,
-    rgba(255, 255, 255, 1) 0%,
-    rgba(230, 27, 0, 0.523) 100%
-  );
+    background: rgb(255, 255, 255);
+    background: linear-gradient(
+        45deg,
+        rgba(255, 255, 255, 1) 0%,
+        rgba(230, 27, 0, 0.523) 100%
+    );
 }
 
 .greenBackground {
-  background: rgb(255, 255, 255);
-  background: linear-gradient(
-    45deg,
-    rgba(255, 255, 255, 1) 0%,
-    rgba(0, 230, 153, 0.523) 100%
-  );
+    background: rgb(255, 255, 255);
+    background: linear-gradient(
+        45deg,
+        rgba(255, 255, 255, 1) 0%,
+        rgba(0, 230, 153, 0.523) 100%
+    );
 }

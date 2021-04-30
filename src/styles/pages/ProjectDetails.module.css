@@ -1,263 +1,263 @@
 .projectDetailsContainer {
-  width: 100%;
-  max-width: 1100px;
-  height: 100%;
+    width: 100%;
+    max-width: 1100px;
+    height: 100%;
 
-  position: relative;
+    position: relative;
 
-  display: flex;
-  flex-direction: column;
+    display: flex;
+    flex-direction: column;
 
-  padding: 5rem 1rem 0 1rem;
+    padding: 5rem 1rem 0 1rem;
 }
 
 .goBackLink {
-  position: absolute;
+    position: absolute;
 
-  left: 1rem;
-  top: 1.5rem;
+    left: 1rem;
+    top: 1.5rem;
 }
 
 .titleBar {
-  width: 100%;
+    width: 100%;
 
-  display: flex;
+    display: flex;
 
-  justify-content: space-between;
-  align-items: center;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .titleBar button {
-  background-color: inherit;
-  border: none;
+    background-color: inherit;
+    border: none;
 }
 
 .titleBar button:disabled {
-  cursor: not-allowed;
+    cursor: not-allowed;
 }
 
 .formContainer {
-  width: 100%;
+    width: 100%;
 
-  display: flex;
-  flex-direction: column;
+    display: flex;
+    flex-direction: column;
 
-  justify-content: center;
-  align-items: center;
+    justify-content: center;
+    align-items: center;
 
-  margin-top: 2rem;
+    margin-top: 2rem;
 
-  color: rgb(133, 133, 133);
+    color: rgb(133, 133, 133);
 }
 
 .buttonSave {
-  width: 100%;
-  height: 4rem;
+    width: 100%;
+    height: 4rem;
 
-  border: 1px solid #30ac6e;
-  border-radius: 1rem;
+    border: 1px solid #30ac6e;
+    border-radius: 1rem;
 
-  background: #37c77f;
+    background: #37c77f;
 
-  color: #fff;
-  font-size: 1.25rem;
-  font-weight: 600;
+    color: #fff;
+    font-size: 1.25rem;
+    font-weight: 600;
 
-  transition: background-color 0.5s;
+    transition: background-color 0.5s;
 }
 
 .buttonSave:hover {
-  background: #30ac6e;
+    background: #30ac6e;
 }
 
 .buttonDelete {
-  width: 100%;
-  height: 4rem;
+    width: 100%;
+    height: 4rem;
 
-  margin-bottom: 2rem;
+    margin-bottom: 2rem;
 
-  border: 1px solid #e64343;
-  border-radius: 1rem;
+    border: 1px solid #e64343;
+    border-radius: 1rem;
 
-  background: #ff4d4d;
+    background: #ff4d4d;
 
-  color: #fff;
-  font-size: 1.25rem;
-  font-weight: 600;
+    color: #fff;
+    font-size: 1.25rem;
+    font-weight: 600;
 
-  transition: background-color 0.5s;
+    transition: background-color 0.5s;
 }
 
 .buttonDelete:hover {
-  background: #ce3c3c;
+    background: #ce3c3c;
 }
 
 .formContainer label {
-  margin-bottom: 0.5rem;
+    margin-bottom: 0.5rem;
 }
 
 .multipleInputs {
-  width: 100%;
-  display: flex;
-  flex-direction: row;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
 
-  justify-content: space-between;
+    justify-content: space-between;
 }
 
 .selectBlock {
-  flex: 1 0 auto;
+    flex: 1 0 auto;
 
-  display: flex;
-  flex-direction: column;
+    display: flex;
+    flex-direction: column;
 
-  margin-bottom: 1rem;
+    margin-bottom: 1rem;
 
-  margin-left: 1rem;
+    margin-left: 1rem;
 }
 
 .viabilityBlock {
-  width: 5rem;
+    width: 5rem;
 }
 
 .situationBlock {
-  max-width: 8rem;
+    max-width: 8rem;
 }
 
 .selectBlock select {
-  height: 4rem;
+    height: 4rem;
 
-  background: var(--secondary);
+    background: var(--secondary);
 
-  border: 1px solid rgb(179, 179, 179);
-  border-radius: 1rem;
-  padding: 0 1rem;
+    border: 1px solid rgb(179, 179, 179);
+    border-radius: 1rem;
+    padding: 0 1rem;
 }
 
 .selectBlock select:disabled {
-  border: none;
+    border: none;
 }
 
 .selectBlock select:focus {
-  border: 2px solid var(--primary);
-  outline: none;
+    border: 2px solid var(--primary);
+    outline: none;
 }
 
 .inputBlock {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
 
-  margin-bottom: 1rem;
+    margin-bottom: 1rem;
 }
 
 .inputBlock span {
-  color: rgb(255, 64, 64);
+    color: rgb(255, 64, 64);
 
-  transition: opacity 0.5s;
+    transition: opacity 0.5s;
 }
 
 .warnInactive {
-  opacity: 0;
+    opacity: 0;
 }
 
 .warnActive {
-  opacity: 1;
+    opacity: 1;
 }
 
 .initDateBlock {
-  margin-right: 0.5rem;
+    margin-right: 0.5rem;
 }
 
 .endDateBlock {
-  margin-left: 0.5rem;
+    margin-left: 0.5rem;
 }
 
 .inputBlock input {
-  height: 4rem;
+    height: 4rem;
 
-  background: var(--secondary);
+    background: var(--secondary);
 
-  border: 1px solid rgb(179, 179, 179);
-  border-radius: 1rem;
+    border: 1px solid rgb(179, 179, 179);
+    border-radius: 1rem;
 }
 
 .inputBlock input:disabled {
-  border: none;
+    border: none;
 }
 
 .inputBlock input::-webkit-outer-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
+    -webkit-appearance: none;
+    margin: 0;
 }
 
 .inputBlock input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
+    -webkit-appearance: none;
+    margin: 0;
 }
 
 .inputBlock input:focus {
-  border: 2px solid var(--primary);
-  outline: none;
+    border: 2px solid var(--primary);
+    outline: none;
 }
 
-.inputBlock input[type="text"] {
-  padding: 0 1rem;
+.inputBlock input[type='text'] {
+    padding: 0 1rem;
 }
 
-.inputBlock input[type="number"] {
-  padding: 0 1rem;
+.inputBlock input[type='number'] {
+    padding: 0 1rem;
 
-  -moz-appearance: textfield;
+    -moz-appearance: textfield;
 }
 
-.inputBlock input[type="date"] {
-  max-width: 14rem;
-  padding: 0 1rem;
+.inputBlock input[type='date'] {
+    max-width: 14rem;
+    padding: 0 1rem;
 }
 
-.inputBlock input[type="date"]::-webkit-calendar-picker-indicator {
-  margin-left: 0px;
+.inputBlock input[type='date']::-webkit-calendar-picker-indicator {
+    margin-left: 0px;
 }
 
 .inputBlock textarea {
-  height: 8rem;
-  width: 100%;
+    height: 8rem;
+    width: 100%;
 
-  background: var(--secondary);
+    background: var(--secondary);
 
-  border: 1px solid rgb(179, 179, 179);
-  border-radius: 1rem;
-  padding: 1rem;
+    border: 1px solid rgb(179, 179, 179);
+    border-radius: 1rem;
+    padding: 1rem;
 
-  resize: none;
+    resize: none;
 }
 
 .inputBlock textarea:disabled {
-  border: none;
+    border: none;
 }
 
 .inputBlock textarea:focus {
-  border: 2px solid var(--primary);
+    border: 2px solid var(--primary);
 
-  outline: none;
+    outline: none;
 }
 
 @media (min-width: 768px) {
-  .projectDetailsContainer {
-    padding: 4rem 6rem;
-  }
+    .projectDetailsContainer {
+        padding: 4rem 6rem;
+    }
 
-  .inputBlock input[type="date"] {
-    margin: 0;
-    padding: 0 1rem;
-  }
+    .inputBlock input[type='date'] {
+        margin: 0;
+        padding: 0 1rem;
+    }
 
-  .selectBlock {
-    max-width: 8rem;
-  }
+    .selectBlock {
+        max-width: 8rem;
+    }
 
-  .goBackLink {
-    left: 2rem;
-    top: 2rem;
-  }
+    .goBackLink {
+        left: 2rem;
+        top: 2rem;
+    }
 }

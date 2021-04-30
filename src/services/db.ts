@@ -1,37 +1,37 @@
 import { MongoClient } from 'mongodb';
 
-let uri = process.env.MONGODB_URI || "";
+let uri = process.env.MONGODB_URI || '';
 let dbName = process.env.MONGODB_DB;
 
 let cachedClient: any = null;
 let cachedDb: any = null;
 
 if (!uri) {
-  throw new Error(
-    'Please define the MONGODB_URI environment variable inside .env.local'
-  );
+    throw new Error(
+        'Please define the MONGODB_URI environment variable inside .env.local',
+    );
 }
 
 if (!dbName) {
-  throw new Error(
-    'Please define the MONGODB_DB environment variable inside .env.local'
-  );
+    throw new Error(
+        'Please define the MONGODB_DB environment variable inside .env.local',
+    );
 }
 
 export async function connectToDatabase() {
-  if (cachedClient && cachedDb) {
-    return { client: cachedClient, db: cachedDb }
-  }
+    if (cachedClient && cachedDb) {
+        return { client: cachedClient, db: cachedDb };
+    }
 
-  const client = await MongoClient.connect(uri, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  });
+    const client = await MongoClient.connect(uri, {
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+    });
 
-  const db = client.db(dbName);
+    const db = client.db(dbName);
 
-  cachedClient = client;
-  cachedDb = db;
+    cachedClient = client;
+    cachedDb = db;
 
-  return { client, db };
+    return { client, db };
 }

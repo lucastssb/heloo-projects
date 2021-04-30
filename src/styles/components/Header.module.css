@@ -16,7 +16,7 @@
     padding: auto;
 }
 
-@media(min-width:768px) {
+@media (min-width: 768px) {
     .headerContainer {
         justify-content: flex-start;
     }
