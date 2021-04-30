@@ -36,7 +36,7 @@ To clone and run this application, you'll need [Git](https://git-scm.com) + [Yar
 
 ```bash
 # Clone this repository
-$ git clone https://github.com/lucastssb/moove.git
+$ git clone https://github.com/lucastssb/heloo-projects.git
 
 # Install dependencies
 $ yarn
