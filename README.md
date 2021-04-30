@@ -1,34 +1,64 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+<h1 align="center">
+    Heloo projects
+</h1>
 
-## Getting Started
+<p align="center">
+  <a href="#-project">Project</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#rocket-technologies">Technologies</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#information_source-how-to-run">How to run</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#-how-to-contribute">How to contribute</a>&nbsp;&nbsp;&nbsp;
 
-First, run the development server:
+</p>
+
+<br>
+
+<p align="center">
+  <img alt="App screen" src=".github/screen.jpeg" width="100%">
+</p>
+
+## 💻 Project
+
+Heloo projects is a very simple project manager
+
+## :rocket: Technologies
+
+This app was made using the following technologies:
+- [React][react]
+- [Yarn][yarn]
+- [NextJs][nextjs]
+
+
+## :information_source: How To Run
+
+To clone and run this application, you'll need [Git](https://git-scm.com) + [Yarn][yarn] installed on your computer.
+
+### Clone and Run
 
 ```bash
-npm run dev
-# or
-yarn dev
+# Clone this repository
+$ git clone https://github.com/lucastssb/moove.git
+
+# Install dependencies
+$ yarn
+
+# Run
+$ yarn dev
+
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🤔 How to contribute
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+-  Make a fork;
+-  Create a branck with your feature: `git checkout -b my-feature`;
+-  Commit changes: `git commit -m 'feat: My new feature'`;
+-  Make a push to your branch: `git push origin my-feature`.
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+After merging your receipt request to done, you can delete a branch from yours.
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+<br>
 
-## Learn More
+Made with ♥ by Lucas Barbosa :wave: [Get in touch!](https://www.linkedin.com/in/lucas-barbosa-60b56416b/)
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+[react]: https://reactjs.org/
+[yarn]: https://yarnpkg.com/
+[nextjs]: https://nextjs.org/
