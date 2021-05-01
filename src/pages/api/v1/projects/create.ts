@@ -13,11 +13,11 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
             name,
             description,
             viability,
-            start_date,
+            init_date,
             end_date,
             status,
-            value,
-            name_responsible,
+            execution_value,
+            responsible_person,
         } = req.body;
 
         // Generate a slug from the name
@@ -43,14 +43,14 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
                 name,
                 description,
                 viability,
-                start_date: new Date(start_date),
+                init_date: new Date(init_date),
                 end_date: new Date(end_date),
                 created_at: new Date(),
                 updated_at: '',
                 final_status_date: '',
                 status,
-                value,
-                name_responsible,
+                execution_value,
+                responsible_person,
                 slug,
             };
 
@@ -59,12 +59,12 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
                 name: Yup.string().required(),
                 description: Yup.string().required(),
                 viability: Yup.number().required(),
-                start_date: Yup.date().required(),
+                init_date: Yup.date().required(),
                 end_date: Yup.date().required(),
                 created_at: Yup.date().required(),
                 status: Yup.string().required(),
-                value: Yup.string().required(),
-                name_responsible: Yup.string().required(),
+                execution_value: Yup.string().required(),
+                responsible_person: Yup.string().required(),
                 slug: Yup.string().required(),
             });
 

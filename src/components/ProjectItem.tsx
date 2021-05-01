@@ -11,11 +11,9 @@ interface Project {
     name: string;
     description: string;
     viability: number;
-    start_date: string;
+    init_date: string;
     end_date: string;
     status: string;
-    value: number;
-    name_responsible: string;
     slug: string;
 }
 
@@ -32,8 +30,7 @@ const Color = {
 };
 
 export default function ProjectItem({ project }: ProjectItemProps) {
-    const { updateProject, getProject } = useContext(ProjectsContext);
-    const [wasAltered, setWasAltered] = useState(false);
+    const { updateProject } = useContext(ProjectsContext);
 
     function handleCompleteProject() {
         updateProject(
@@ -59,11 +56,13 @@ export default function ProjectItem({ project }: ProjectItemProps) {
                 Color[project.viability]
             }`}
         >
-            <h1>{project.name}</h1>
-            <span>{project.status}</span>
+            <div>
+                <h1>{project.name}</h1>
+                <span>{project.status}</span>
+            </div>
             <div className={styles.dateAndOptionsContainer}>
                 <span>{`${parseISO(
-                    project.start_date,
+                    project.init_date,
                 ).toLocaleDateString()} - ${parseISO(
                     project.end_date,
                 ).toLocaleDateString()}`}</span>
@@ -77,7 +76,6 @@ export default function ProjectItem({ project }: ProjectItemProps) {
             <div className={styles.projectOptionsContainer}>
                 <button
                     disabled={
-                        wasAltered ||
                         project.status === 'Concluído' ||
                         project.status === 'Cancelado'
                     }
@@ -89,7 +87,6 @@ export default function ProjectItem({ project }: ProjectItemProps) {
                 </button>
                 <button
                     disabled={
-                        wasAltered ||
                         project.status === 'Concluído' ||
                         project.status === 'Cancelado'
                     }

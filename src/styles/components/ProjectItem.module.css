@@ -1,6 +1,10 @@
 .projectItemContainer {
+    min-height: 7.5rem;
+
     display: flex;
     flex-direction: column;
+
+    justify-content: space-between;
 
     position: relative;
 
@@ -37,7 +41,6 @@
 }
 
 .dateAndOptionsContainer {
-    padding: 1.5rem 0 0 0;
 
     color: rgb(122, 122, 122);
     font-size: 0.8rem;
@@ -92,12 +95,11 @@
 }
 
 @media (min-width: 768px) {
+    .projectItemContainer {
+        min-height: 10rem;
+    }
     .projectItemContainer h1 {
         font-size: 1.5rem;
-    }
-
-    .dateAndOptionsContainer {
-        padding: 3rem 0 0 0;
     }
 }
 

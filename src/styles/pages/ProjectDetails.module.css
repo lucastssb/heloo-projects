@@ -242,6 +242,12 @@
     outline: none;
 }
 
+.statusInfo {
+    margin-bottom: 1rem;
+
+    color: var(--primary);
+}
+
 @media (min-width: 768px) {
     .projectDetailsContainer {
         padding: 4rem 6rem;

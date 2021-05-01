@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { FormEvent, useContext, useEffect, useState } from 'react';
 import Link from 'next/link';
 import Head from 'next/head';
 import { parseISO } from 'date-fns';
@@ -65,7 +65,7 @@ export default function CreateProject() {
 
     const router = useRouter();
 
-    async function handleSubmit(event) {
+    async function handleSubmit(event: FormEvent) {
         event.preventDefault();
 
         if (formValidator() === 0) {
@@ -110,6 +110,7 @@ export default function CreateProject() {
                         <div className={styles.inputBlock}>
                             <label htmlFor="name">Nome</label>
                             <input
+                                maxLength={35}
                                 type="text"
                                 id="name"
                                 value={name}

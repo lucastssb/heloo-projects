@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { FormEvent, useContext, useEffect, useState } from 'react';
 import { parseISO } from 'date-fns';
 import { BiEditAlt, BiArrowBack } from 'react-icons/bi';
 import { GetServerSideProps } from 'next';
@@ -14,11 +14,12 @@ interface Project {
     name: string;
     description: string;
     viability: number;
-    start_date: string;
+    init_date: string;
     end_date: string;
+    final_status_date: string;
     status: string;
-    value: number;
-    name_responsible: string;
+    execution_value: number;
+    responsible_person: string;
     slug: string;
 }
 
@@ -28,13 +29,19 @@ interface ProjectDetailsProps {
 
 export default function ProjectDetails({ project }: ProjectDetailsProps) {
     const router = useRouter();
-    const { updateProject, deleteProject } = useContext(ProjectsContext);
+    const { updateProject, deleteProject, isLoading } = useContext(
+        ProjectsContext,
+    );
 
     const [viability, setViability] = useState(project.viability);
     const [situation, setSituation] = useState(project.status);
     const [description, setDescription] = useState(project.description);
     const [isEditable, setIsEditable] = useState(false);
     const [hasDescriptionError, setHasDescriptionError] = useState(false);
+
+    useEffect(() => {
+        if (!isLoading) router.replace(router.asPath);
+    }, [isLoading]);
 
     function inputValidator() {
         let errors = 0;
@@ -45,15 +52,16 @@ export default function ProjectDetails({ project }: ProjectDetailsProps) {
         return errors;
     }
 
-    async function handleSave(event) {
+    async function handleSave(event: FormEvent) {
         event.preventDefault();
         if (inputValidator() === 0) {
             updateProject(description, viability, situation, project.slug);
             setIsEditable(false);
+            router.replace(router.asPath);
         }
     }
 
-    async function handleDelete(event) {
+    async function handleDelete(event: FormEvent) {
         event.preventDefault();
 
         deleteProject(project.slug);
@@ -106,7 +114,7 @@ export default function ProjectDetails({ project }: ProjectDetailsProps) {
                                     disabled
                                     type="date"
                                     id="int-date"
-                                    value={parseISO(project.start_date)
+                                    value={parseISO(project.init_date)
                                         .toISOString()
                                         .slice(0, 10)}
                                 />
@@ -137,7 +145,7 @@ export default function ProjectDetails({ project }: ProjectDetailsProps) {
                                     disabled
                                     type="number"
                                     id="execution-value"
-                                    value={project.value}
+                                    value={project.execution_value}
                                 />
                             </div>
                             <div
@@ -171,7 +179,7 @@ export default function ProjectDetails({ project }: ProjectDetailsProps) {
                                     disabled
                                     type="text"
                                     id="responsible-person"
-                                    value={project.name_responsible}
+                                    value={project.responsible_person}
                                 />
                             </div>
                             <div
@@ -222,6 +230,10 @@ export default function ProjectDetails({ project }: ProjectDetailsProps) {
                                 Esse campo nao pode ser vazio
                             </span>
                         </div>
+
+                        {project.final_status_date && (
+                            <span className={styles.statusInfo}>{`Esse projeto foi ${project.status.toLowerCase()} no dia ${parseISO(project.final_status_date).toLocaleDateString()}`}</span>
+                        )}
 
                         {isEditable ? (
                             <button className={styles.buttonSave} type="submit">

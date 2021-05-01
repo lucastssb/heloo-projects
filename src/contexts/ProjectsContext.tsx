@@ -3,30 +3,32 @@ import LoadingModal from '../components/LoadingModal';
 import api from '../services/api';
 
 interface Project {
+    _id: string;
     name: string;
     description: string;
     viability: number;
-    start_date: string;
+    init_date: string;
     end_date: string;
+    final_status_date: string;
     status: string;
-    value: number;
-    name_responsible: string;
+    execution_value: number;
+    responsible_person: string;
     slug: string;
 }
 
 interface ProjectContextData {
     projects: Project[];
+    isLoading: boolean;
     refreshApiData(): void;
-    getProject(slug: string | string[]): Project;
     createProject(
         name: string,
         description: string,
         viability: number,
-        start_date: Date,
+        init_date: Date,
         end_date: Date,
         status: string,
-        value: number,
-        name_responsible: string,
+        execution_value: number,
+        responsible_person: string,
     ): Promise<any>;
     updateProject(
         description: string,
@@ -67,21 +69,15 @@ export function ProjectsProvider({ children }: ProjectsProviderProps) {
             });
     }
 
-    function getProject(slug: string | string[]) {
-        const response = apiData.find(project => project.slug === slug);
-
-        return response;
-    }
-
     async function createProject(
         name: string,
         description: string,
         viability: number,
-        start_date: Date,
+        init_date: Date,
         end_date: Date,
         status: string,
-        value: number,
-        name_responsible: string,
+        execution_value: number,
+        responsible_person: string,
     ) {
         setIsLoading(true);
 
@@ -90,11 +86,11 @@ export function ProjectsProvider({ children }: ProjectsProviderProps) {
                 name,
                 description,
                 viability,
-                start_date,
+                init_date,
                 end_date,
                 status,
-                value,
-                name_responsible,
+                execution_value,
+                responsible_person,
             });
             return response;
         } catch (error) {
@@ -140,7 +136,7 @@ export function ProjectsProvider({ children }: ProjectsProviderProps) {
         <ProjectsContext.Provider
             value={{
                 projects: apiData,
-                getProject,
+                isLoading,
                 refreshApiData,
                 createProject,
                 updateProject,

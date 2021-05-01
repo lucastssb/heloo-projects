@@ -13,11 +13,11 @@ interface Project {
     name: string;
     description: string;
     viability: number;
-    start_date: string;
+    init_date: string;
     end_date: string;
     status: string;
-    value: number;
-    name_responsible: string;
+    execution_value: number;
+    responsible_person: string;
     slug: string;
 }
 
@@ -59,7 +59,7 @@ export default function Home() {
             if (
                 initDate !== '' &&
                 parseISO(initDate).toDateString() !==
-                    parseISO(project.start_date).toDateString()
+                    parseISO(project.init_date).toDateString()
             )
                 return;
 
