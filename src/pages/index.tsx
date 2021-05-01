@@ -10,6 +10,7 @@ import ShimmerProjectItem from '../components/ShimmerProjectItem';
 import styles from '../styles/pages/Home.module.css';
 
 interface Project {
+    _id: string;
     name: string;
     description: string;
     viability: number;
@@ -26,7 +27,7 @@ function getCurrentDateFormatted() {
 }
 
 export default function Home() {
-    const { projects } = useContext(ProjectsContext);
+    const { projects, isApiDataLoaded } = useContext(ProjectsContext);
 
     const [filterProjects, setFilterProjects] = useState([] as Project[]);
     const [viability, setViability] = useState('');
@@ -145,10 +146,10 @@ export default function Home() {
                         />
                     </div>
                 </div>
-                {!!projects.length ? (
+                {isApiDataLoaded ? (
                     <div className={styles.projectsList}>
-                        {filterProjects.map((project, index) => (
-                            <ProjectItem key={index} project={project} />
+                        {filterProjects.map(project => (
+                            <ProjectItem key={project._id} project={project} />
                         ))}
                     </div>
                 ) : (

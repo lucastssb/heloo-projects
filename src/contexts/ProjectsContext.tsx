@@ -19,6 +19,7 @@ interface Project {
 interface ProjectContextData {
     projects: Project[];
     isLoading: boolean;
+    isApiDataLoaded: boolean;
     refreshApiData(): void;
     createProject(
         name: string,
@@ -48,10 +49,14 @@ export const ProjectsContext = createContext({} as ProjectContextData);
 export function ProjectsProvider({ children }: ProjectsProviderProps) {
     const [apiData, setApiData] = useState([] as Project[]);
     const [isLoading, setIsLoading] = useState(false);
+
+    const [isApiDataLoaded, setIsApiDataLoaded] = useState(false);
+
     useEffect(() => {
         api.get('/api/v1/projects')
             .then(response => {
                 setApiData(response.data);
+                setIsApiDataLoaded(true);
             })
             .catch(error => {
                 console.log(error);
@@ -137,6 +142,7 @@ export function ProjectsProvider({ children }: ProjectsProviderProps) {
             value={{
                 projects: apiData,
                 isLoading,
+                isApiDataLoaded,
                 refreshApiData,
                 createProject,
                 updateProject,

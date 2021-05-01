@@ -1,7 +1,7 @@
 import React from 'react';
 import Lottie from 'react-lottie';
 import * as LoadingIcon from '../../public/lottie/loading.json';
-import styles from '../styles/components//LoadingModal.module.css';
+import styles from '../styles/components/LoadingModal.module.css';
 
 export default function LoadingModal() {
     const defaultOptions = {
